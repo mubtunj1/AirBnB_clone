@@ -64,4 +64,4 @@ $
 ```  
 ### Authors:
 * Onwuka Chukwuebuka Nathan -> [Linkdin](https://www.linkedin.com/in/nathan-88-ebu/) | [Github](https://github.com/Nathan-88) | [Twitter](https://twitter.com/illchucks)
-* Mubaraq Owolabi -> [Linkdin](https://www.linkedin.com/in/mubtunj/) | [Github](https://github.com/Nathan-88) | [Twitter](https://twitter.com/iam__leo)
+* Mubaraq Owolabi -> [Linkdin](https://www.linkedin.com/in/mubtunj/) | [Github](https://github.com/Nathan-88) | [Twitter](https://twitter.com/iam__leo) 
