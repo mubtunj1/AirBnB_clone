@@ -19,7 +19,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """quit the program"""
+        """Quit command to exit the program"""
+        return True
 
     def emptyline(self):
         """ensures an empty line + ENTER doesnt execute anything
