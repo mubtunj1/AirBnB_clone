@@ -11,8 +11,7 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """defines the HBNBCommand interpreter"""
-    prompt = '(hbnb)'
-    classes =["BaseModel"]
+    prompt = '(hbnb) '
 
     def do_EOF(self, line):
         """command handler returns a true value,
@@ -81,4 +80,4 @@ class HBNBCommand(cmd.Cmd):
                 
             
 if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()

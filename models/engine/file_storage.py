@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+convert the dictionary representation to a JSON string
+"""
 import json
 
 class FileStorage:
@@ -29,19 +31,18 @@ class FileStorage:
             
     def classes(self):
         from models.base_model import BaseModel
-        classes = {
+
+        class_dict = {
             'BaseModel': BaseModel,
         }
-        return classes
-                
-    def reload(self):
-        """Loads objects from file storage"""
+
         try:
             with open(self.__file_path, mode="r", encoding="utf-8") as f:
                 FileStorage.__objects = json.load(f)
                 for key, value in FileStorage.__objects.items():
                     cls_name = value['__class__']
-                    cls = self.classes()[cls_name]
-                    FileStorage.__objects[key] = cls(**value)
+                    if cls_name in class_dict:
+                        cls = class_dict[cls_name]
+                        FileStorage.__objects[key] = cls(**value)
         except FileNotFoundError:
             pass
