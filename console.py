@@ -10,7 +10,7 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     """defines the HBNBCommand interpreter"""
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
 
     def do_EOF(self, line):
         """command handler returns a true value,
@@ -27,5 +27,6 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+
 if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()
