@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import json
 
 class FileStorage:
@@ -26,21 +27,21 @@ class FileStorage:
         with open(self.__file_path, mode="w", encoding="utf-8") as f:
             json.dump(obj_dict, f)
             
-    def reload(self):
-        """Loads objects from file storage"""
+    def classes(self):
         from models.base_model import BaseModel
-
-        class_dict = {
+        classes = {
             'BaseModel': BaseModel,
         }
-
+        return classes
+                
+    def reload(self):
+        """Loads objects from file storage"""
         try:
             with open(self.__file_path, mode="r", encoding="utf-8") as f:
                 FileStorage.__objects = json.load(f)
                 for key, value in FileStorage.__objects.items():
                     cls_name = value['__class__']
-                    if cls_name in class_dict:
-                        cls = class_dict[cls_name]
-                        FileStorage.__objects[key] = cls(**value)
+                    cls = self.classes()[cls_name]
+                    FileStorage.__objects[key] = cls(**value)
         except FileNotFoundError:
             pass
