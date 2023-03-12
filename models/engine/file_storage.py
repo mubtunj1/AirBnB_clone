@@ -32,21 +32,34 @@ class FileStorage:
         with open(self.__file_path, mode="w", encoding="utf-8") as f:
             json.dump(obj_dict, f)
 
+    def classes(self):
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.place import Place
+        from models.amenity import Amenity
+        from models.review import Review
+        from models.base_model import BaseModel
+        from models.base_model import BaseModel
+        classes = {
+            'BaseModel': BaseModel,
+            'User': User,
+            'State': State,
+            'City': City,
+            'Place': Place,
+            'Amenity': Amenity,
+            'Review': Review
+        }
+        return classes
+
     def reload(self):
         """Loads objects from file storage"""
-        from models.base_model import BaseModel
-
-        class_dict = {
-            'BaseModel': BaseModel,
-        }
-
         try:
             with open(self.__file_path, mode="r", encoding="utf-8") as f:
                 FileStorage.__objects = json.load(f)
                 for key, value in FileStorage.__objects.items():
                     cls_name = value['__class__']
-                    if cls_name in class_dict:
-                        cls = class_dict[cls_name]
-                        FileStorage.__objects[key] = cls(**value)
+                    cls = self.classes()[cls_name]
+                    FileStorage.__objects[key] = cls(**value)
         except FileNotFoundError:
             pass
