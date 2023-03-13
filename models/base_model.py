@@ -11,12 +11,18 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        """BaseModel constructor"""
-        if kwargs:
+        """BaseModel constructor
+
+        Args:
+            - *args: list of arguments
+            - **kwargs: dict of key-values arguments
+        """
+
+        if kwargs is not None and kwargs != {}:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                if key != '__class__':
+                elif key != '__class__':
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
