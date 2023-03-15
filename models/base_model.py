@@ -31,7 +31,7 @@ class BaseModel:
             if not hasattr(self, 'created_at'):
                 setattr(self, 'created_at', time)
             if not hasattr(self, 'updated_at'):
-                setattr(self, 'updated_at', time)                  
+                setattr(self, 'updated_at', time)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
