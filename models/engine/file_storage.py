@@ -55,7 +55,8 @@ class FileStorage:
     def reload(self):
         """Loads objects from file storage"""
         try:
-            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, mode="r",
+                      encoding="utf-8") as f:
                 FileStorage.__objects = json.load(f)
                 for key, value in FileStorage.__objects.items():
                     cls_name = value['__class__']
